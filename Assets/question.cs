@@ -17,7 +17,7 @@ public class question : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        int qcount = 0; //gamestart.getqCount();
+        int qcount = StartButton.quiznum;
         if(qcount == 0)
         {
           SSIDCSV = Resources.Load("SSIDCSV") as TextAsset;
