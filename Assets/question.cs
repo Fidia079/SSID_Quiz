@@ -44,7 +44,7 @@ public class question : MonoBehaviour
     private void QuestionLabelSet()
     {
         csvData[k] = csvData[qrand];
-        Text qLabel = GameObject.Find("Canvas/Question").GetComponent<Text>();
+        Text qLabel = GameObject.Find("Canvas/Square/Question").GetComponent<Text>();
         qLabel.text = "SSID : " + csvData[k][0];
     }
 
@@ -55,7 +55,7 @@ public class question : MonoBehaviour
 
         for(int j = 1; j <= 6; j++)
         {
-          Text aLabel = GameObject.Find("Canvas/OptionButton"+j).GetComponentInChildren<Text>();
+          Text aLabel = GameObject.Find("Canvas/SmartPhone/OptionButton"+j).GetComponentInChildren<Text>();
           aLabel.text = array[j-1];
           answer = csvData[k][1];
         }
