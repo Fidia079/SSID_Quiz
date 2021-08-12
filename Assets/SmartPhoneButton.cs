@@ -23,6 +23,7 @@ public class SmartPhoneButton : MonoBehaviour
       }else{
         Smart.transform.position = new Vector3(20, 0, 0);
         Debug.Log(PhoneTime);
+        PhoneTime = 0;
       }
     }
 }
