@@ -6,7 +6,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
-public class TextMessage : MonoBehaviour
+public class TextMessageWiFi : MonoBehaviour
 {
     [SerializeField]
     Text scenarioMessage;
@@ -18,10 +18,7 @@ public class TextMessage : MonoBehaviour
     [SerializeField]
     Button optionButton;
 
-     public GameObject TachieImage;
-
     Scenario currentScenario;
-    Scenario scenario01;
     Scenario scenario03;
     int index = 0;
     public static int BackToChoice = 0;
@@ -42,63 +39,30 @@ public class TextMessage : MonoBehaviour
       public Func<bool> IsFlagOK = () => {return true;};
     }
 
-    Scenario scenario02;
+    Scenario scenario04;
     bool isCheckedKey = false;
 
     void Start()
     {
-        var scenario01 = new Scenario()
-        {
-        	ScenarioID = "scenario01",
-        	Texts = new List<string>()
-        	{
-        		"お、フリーWi-Fiが通ってるみたいだ。",
-        		"データ通信の制限がかかりそうな手前だ、"
-        	},
-                NextScenarioID = "scenario02"
-        	};
-
-        var scenario02 = new Scenario()
-        {
-        	ScenarioID = "scenario02",
-        	Texts = new List<string>()
-        	{
-        		"兎にも角にもWi-Fiに繋げた方がいいか？"
-        	},
-        	Options = new List<Option>
-                {
-                  new Option()
-                  {
-                    Text = "繋げる",
-                    action = WifiConnect
-                  },
-                  new Option()
-                  {
-                    Text = "繋げない",
-                    action = NotWifiConnect
-                  }
-                }
-          };
-          scenarios.Add(scenario02);
-
       var scenario03 = new Scenario()
       {
           ScenarioID = "scenario03",
           Texts = new List<string>()
           {
             "良し、取り敢えずWi-Fiを繋げたぞ。",
-            "信頼できるかどうかは分からないが。",
+            "信頼できるかどうかは分からないが。"
           },
           NextScenarioID = "scenario04"
       };
       scenarios.Add(scenario03);
+
 
       var scenario04 = new Scenario()
       {
         ScenarioID = "scenario04",
         Texts = new List<string>()
         {
-          "とにかく早速ログインしてみるか？",
+          "とにかくネットショッピングをしたいがどうしようか？",
         },
         Options = new List<Option>
         {
@@ -121,43 +85,8 @@ public class TextMessage : MonoBehaviour
       };
       scenarios.Add(scenario04);
 
-      SetScenario(scenario01);
+      SetScenario(scenario03);
 
-    }
-
-    public void WifiConnect()
-    {
-    	var scenario = new Scenario();
-    	scenario.NextScenarioID = "scenario06";
-      scenario.Texts.Add("まぁした方が良いよな。");
-      var scenario06 = new Scenario()
-      {
-        ScenarioID = "scenario06",
-        Texts = new List<string>()
-        {
-          "ちょうど店のSSIDが見えるな。これを参考に接続しようか。",
-        },
-        Options = new List<Option>
-        {
-          new Option()
-          {
-            Text = "Wi-Fiに接続する",
-            action = SelectWiFi
-          }
-        }
-      };
-      scenarios.Add(scenario06);
-      SetScenario(scenario);
-    }
-
-    public void SelectWiFi()
-    {
-      var scenario = new Scenario();
-      scenario.NextScenarioID = "scenario03";
-      scenario.Texts.Add("Wait...");
-      BackToChoice++;
-      SceneManager.LoadScene("SampleScene");
-      SetScenario(scenario);
     }
 
     public void NotWifiConnect()
@@ -240,14 +169,6 @@ public class TextMessage : MonoBehaviour
             SetNextMessage();
           }
         }
-      }
-      if(scenarioMessage.text == "とにかく早速ログインしてみるか？")
-      {
-        TachieImage.SetActive(true);
-      }
-      else
-      {
-        TachieImage.SetActive(false);
       }
     }
 

@@ -12,6 +12,7 @@ public class question : MonoBehaviour
     public static List<int> qnum = new List<int>();
     public int csvrow;
     public static string answer;
+    public static int WiFiBool = 0;
     private int k = 0;
     private int qrand = 0;
     // Start is called before the first frame update

@@ -13,18 +13,8 @@ public class button : MonoBehaviour
 
         if(question.answer == selectButton.text)
         {
-          Debug.Log("正解");
-          SceneManager.LoadScene("correct");
+          question.WiFiBool = 1;
         }
-        else
-        {
-          if(StartButton.quiznum == 0)
-          {
-            StartButton.quiznum += 1;
-            Debug.Log(StartButton.quiznum);
-          }
-          Debug.Log("不正解");
-          SceneManager.LoadScene("wrong");
-        }
+        SceneManager.LoadScene("choice-1");
     }
 }
