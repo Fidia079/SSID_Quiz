@@ -18,6 +18,8 @@ public class TextMessageWiFi : MonoBehaviour
     [SerializeField]
     Button optionButton;
 
+    public GameObject TachieImage;
+
     Scenario currentScenario;
     Scenario scenario03;
     int index = 0;
@@ -62,7 +64,7 @@ public class TextMessageWiFi : MonoBehaviour
         ScenarioID = "scenario04",
         Texts = new List<string>()
         {
-          "とにかくネットショッピングをしたいがどうしようか？",
+          "とにかく早速ログインしてみるか？",
         },
         Options = new List<Option>
         {
@@ -169,6 +171,14 @@ public class TextMessageWiFi : MonoBehaviour
             SetNextMessage();
           }
         }
+      }
+      if(scenarioMessage.text == "とにかく早速ログインしてみるか？")
+      {
+        TachieImage.SetActive(true);
+      }
+      else
+      {
+        TachieImage.SetActive(false);
       }
     }
 
